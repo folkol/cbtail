@@ -1,0 +1,18 @@
+#!/bin/sh
+
+SCRIPT_FILE=$0
+HOST=${1-192.168.99.100}
+BUCKET=${2-cmbucket}
+PASSWORD=${3-cmpasswd}
+
+while [ -L "$SCRIPT_FILE" ]
+do
+    SCRIPT_FILE=$(readlink $SCRIPT_FILE)
+done
+
+cd $(dirname $SCRIPT_FILE)
+java -Dhost=$HOST \
+     -Dbucket=${BUCKET} \
+     -Dpassword=${PASSWORD} \
+     -Djava.util.logging.config.file=../logging.properties \
+     -jar ../cbtail-*-SNAPSHOT-jar-with-dependencies.jar
