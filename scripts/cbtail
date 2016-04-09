@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 SCRIPT_FILE=$0
 HOST=${1-192.168.99.100}
