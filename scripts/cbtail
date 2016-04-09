@@ -5,7 +5,7 @@ HOST=${1-192.168.99.100}
 BUCKET=${2-cmbucket}
 PASSWORD=${3-cmpasswd}
 
-cd $(dirname $(greadlink -f "$SCRIPT_FILE")))
+cd $(dirname $(greadlink -f "$SCRIPT_FILE"))
 java -Dhost=$HOST \
      -Dbucket=${BUCKET} \
      -Dpassword=${PASSWORD} \
