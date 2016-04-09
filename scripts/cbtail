@@ -15,4 +15,4 @@ java -Dhost=$HOST \
      -Dbucket=${BUCKET} \
      -Dpassword=${PASSWORD} \
      -Djava.util.logging.config.file=../logging.properties \
-     -jar ../cbtail-*-SNAPSHOT-jar-with-dependencies.jar
+     -jar ../cbtail.jar
