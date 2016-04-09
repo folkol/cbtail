@@ -16,10 +16,16 @@ import static java.util.UUID.randomUUID;
 
 public class Tail {
     public static void main(String[] args) {
-        String node = System.getProperty("host", "localhost");
+        String host = System.getProperty("host", "localhost");
         String bucket = System.getProperty("bucket", "default");
         String password = System.getProperty("password", "");
         String connectionName = "cb-tail-" + randomUUID().toString();
+
+        System.err.printf(
+            "=== Tailing Couchbase @ %s (%s:%s) ===%n",
+            host,
+            password,
+            bucket);
 
         DefaultCoreEnvironment env =
             DefaultCoreEnvironment
@@ -28,7 +34,7 @@ public class Tail {
                 .build();
         ClusterFacade core = new CouchbaseCore(env);
 
-        core.send(new SeedNodesRequest(node)).toBlocking().single();
+        core.send(new SeedNodesRequest(host)).toBlocking().single();
         core.send(new OpenBucketRequest(bucket, password)).toBlocking().single();
         core.send(new OpenConnectionRequest(connectionName, bucket)).toBlocking().single();
 
