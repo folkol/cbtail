@@ -7,6 +7,7 @@ PASSWORD=${3-cmpasswd}
 
 while [ -L "$SCRIPT_FILE" ]
 do
+    echo $SCRIPT_FILE
     SCRIPT_FILE=$(readlink $SCRIPT_FILE)
 done
 
